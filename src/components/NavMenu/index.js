@@ -1,19 +1,39 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import styles from './NavMenu.module.css';
+import moment from "moment";
+
 export default class NavMenu extends Component {
-  constructor (props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-  }
+    }
 
-  render () {
+    monthRender = () => {
+        return (<>
+            <div>Previous month</div>
+            <div onClick={this.props.handler}>Selected Month</div>
+            <div>Next month</div>
+        </>)
+    };
 
-    return (<div className={styles.navContainer}>
-        <div>Prev</div>
-        <div onClick={this.props.handler}>Week</div>
-        <div>Next</div>
-      </div>
-    );
+    weekRender = () => {
+        return (<>
+                <div>Prev</div>
+                <div onClick={this.props.handler}>{this.props.week}</div>
+                <div>Next</div>
+            </>
+        )
 
-  }
+    };
+
+    render() {
+        return (<div className={styles.navContainer}>
+                {this.props.currentMode
+                    ? this.monthRender()
+                    : this.weekRender()
+                }
+            </div>
+        );
+
+    }
 }

@@ -1,8 +1,6 @@
-
-
 body {
     --accent-color:#0B3157;
     background-color: gray;
-    font-family: Montserrat;
+    font-family: Montserrat,sans-serif;
     font-size: 16px;
 }

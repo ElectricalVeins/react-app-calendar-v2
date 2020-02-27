@@ -18,12 +18,14 @@ export default class CalendarNav extends Component {
 
   render () {
     return (<div className={styles.navContainer}>
-        <NavMenu handler={this.clickHandler} />
+        <NavMenu handler={this.clickHandler} currentMode={this.props.currentMode} />
         <ModeChange  isOpen={this.state.isOpenModeChanger}/>
       </div>
     );
   }
 }
+
+//
 
 function ModeChange (props) {
   return (<div className={props.isOpen
