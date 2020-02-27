@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import CalendarNav from '../CalendarNav';
+import CalendarBody from '../CalendarBody';
+import styles from './Calendar.module.css';
 
 export default class Calendar extends Component {
   constructor (props) {
@@ -7,7 +10,7 @@ export default class Calendar extends Component {
   }
 
   render () {
-    return (<div>
+    return (<div className={styles.container} >
       <CalendarNav/>
       <CalendarBody/>
     </div>);

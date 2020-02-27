@@ -1,0 +1,16 @@
+.navContainer{
+    position: relative;
+}
+
+.modeChangerClosed{
+    display: none;
+
+}
+
+.modeChangerOpen{
+    padding: 5px;
+    display: flex;
+    position: absolute;
+    transform: translate(-50%);
+    left: 50%;
+}

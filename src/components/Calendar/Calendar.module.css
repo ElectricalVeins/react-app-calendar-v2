@@ -1,0 +1,8 @@
+.container {
+    max-width: 500px;
+    width: 100%;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Week from '../Week';
 
 export default class CalendarBody extends Component {
   constructor (props) {
@@ -10,11 +11,7 @@ export default class CalendarBody extends Component {
 
     return (<div>
       <CalendarHeader/>
-      <Week></Week>
-      <Week></Week>
-      <Week></Week>
-      <Week></Week>
-      <Week></Week>
+      <Week/>
     </div>);
 
   }

@@ -1,0 +1,6 @@
+.navContainer{
+    display: flex;
+    color: white;
+    background-color: var(--accent-color);
+    justify-content: space-around;
+}
