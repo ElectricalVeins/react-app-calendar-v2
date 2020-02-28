@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import styles from './NavMenu.module.css';
+import styles from './NavMenu.module.scss';
 import moment from "moment";
 
 export default class NavMenu extends Component {

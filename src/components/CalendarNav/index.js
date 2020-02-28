@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavMenu from '../NavMenu';
-import styles from './CalendarNav.module.css';
+import styles from './CalendarNav.module.scss';
 
 export default class CalendarNav extends Component {
   constructor (props) {
