@@ -8,6 +8,15 @@ export default class NavMenu extends Component {
 
     }
 
+    setNextDateHandler=()=>{
+        const isNext=true;
+        this.props.setDateHandler(isNext)
+    };
+
+    setPrevDateHandler=()=>{
+
+    };
+
     monthRender = () => {
         const {currentDate: date} = this.props;
 
@@ -26,7 +35,7 @@ export default class NavMenu extends Component {
                     date.format('MMMM')
                 }
             </div>
-            <div>
+            <div onClick={this.setNextDateHandler} >
                 {
                     date.clone().subtract(-1, 'month').format('MMMM')
                 }

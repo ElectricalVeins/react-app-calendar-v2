@@ -19,9 +19,13 @@ export default class CalendarNav extends Component {
     render() {
         return (<div className={styles.navContainer}>
                 <NavMenu
+                    currentMode={this.props.currentMode}
                     currentDate={this.props.currentDate}
                     handler={this.clickHandler}
-                    currentMode={this.props.currentMode}/>
+                    setDateHandler={this.props.setDateHandler}
+
+
+                />
                 <div
                     className={styles.modeChangerWrapper}
                 >

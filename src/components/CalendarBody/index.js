@@ -23,7 +23,7 @@ export default class CalendarBody extends Component {
                 startDate.add(1, 'day');
             }
             weeks.push((weekDates));
-        } while (currentDate.endOf(this.props.currentMode).isSameOrAfter(startDate,
+        } while (this.props.startDate.clone().endOf(this.props.currentMode).isSameOrAfter(startDate,
             'date'));
 
         return weeks;
