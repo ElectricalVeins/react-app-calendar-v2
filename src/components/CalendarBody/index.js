@@ -10,7 +10,10 @@ export default class CalendarBody extends Component {
 
     dateCalc = () => {
         const weeks = [];
-        const startDate = this.props.startDate.clone();
+        const start = this.props.startDate;
+        const startDate=start.startOf('week').clone()
+        const currentDate = this.props.currentDate.clone();
+        const endDate=this.props.endDate.clone();
 
         do {
             const weekDates = [];
@@ -20,7 +23,7 @@ export default class CalendarBody extends Component {
                 startDate.add(1, 'day');
             }
             weeks.push((weekDates));
-        } while (this.props.currentDate.endOf(this.props.currentMode).isSameOrAfter(startDate,
+        } while (currentDate.endOf(this.props.currentMode).isSameOrAfter(startDate,
             'date'));
 
         return weeks;

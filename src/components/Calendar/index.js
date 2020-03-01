@@ -18,6 +18,7 @@ export default class Calendar extends Component {
             week: 'week',
             month: 'month'
         };
+
         const defaultMode = modes.month;
         const start = moment().startOf(defaultMode);
         const end = moment().endOf(defaultMode);
@@ -32,7 +33,9 @@ export default class Calendar extends Component {
 
     modeChanger = (value) => {
         this.setState({
-            appMode: value
+            appMode: value,
+            start: moment().startOf(value),
+            end:moment().endOf(value)
         });
     };
 
