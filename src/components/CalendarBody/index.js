@@ -33,6 +33,7 @@ export default class CalendarBody extends Component {
         for (let week of weeks) {
             weekComponents.push(
                 <Week
+                    currentDay={this.props.currentDate.clone()}
                     startDate={this.props.startDate.clone()}
                     endDate={this.props.endDate.clone()}
                     week={week}

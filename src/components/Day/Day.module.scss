@@ -8,3 +8,23 @@
   height:40px;
   vertical-align: middle;
 }
+
+.currentDay {
+  @extend .day;
+  position: relative;
+}
+.currentDay::before {
+  content: '.';
+/*  display: inline-block;*/
+
+  position: absolute;
+  top: -0.5rem;
+  left: 0;
+
+  color: red;
+  font-size: 20px;
+
+  text-align: center;
+  width: 100%;
+
+}

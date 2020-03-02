@@ -15,6 +15,11 @@ export default class Day extends Component {
           {day.date()}
         </td>
       );
+    } else if(day.isSame(this.props.currentDate,'day')){
+      return (<td className={styles.currentDay}>
+            {day.date()}
+          </td>
+      );
     } else {
       return (<td className={styles.day}>
           {day.date()}
