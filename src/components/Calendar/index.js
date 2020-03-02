@@ -1,40 +1,41 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import CalendarNav from '../CalendarNav';
 import CalendarBody from '../CalendarBody';
 import styles from './Calendar.module.scss';
 import moment from 'moment';
 
 export default class Calendar extends Component {
-  constructor (props) {
-    super(props);
+    constructor(props) {
+        super(props);
+        this.state = {
+            appMode: 'month',
+        };
+    }
 
-    const appModes = {
-      week: 'week',
-      month: 'month'
+    modeChanger = (value) => {
+        this.setState({
+            appMode: value
+        });
     };
 
-    const defaultMode = appModes.month;
+    render() {
 
-    const start = moment().startOf(defaultMode);
-    const end = moment().endOf(defaultMode);
+        const currentDate = moment();
+        const startDate = currentDate.clone().startOf(this.state.appMode);
+        const endDate = startDate.clone().endOf(this.state.appMode);
 
-    this.state = {
-      appMode: defaultMode,
-      currentDate: moment(),
-      start: start,
-      end: end,
-    };
-  }
 
-  render () {
-    return (<div className={styles.container}>
-      <CalendarNav
-        currentMode={this.state.appMode}/>
-      <CalendarBody
-        start={this.state.start}
-        end={this.state.end}
-        currentDate={this.state.currentDate}
-        currentMode={this.state.appMode}/>
-    </div>);
-  }
+        return (<div className={styles.container}>
+            <CalendarNav
+                currentDate={currentDate}
+                modeChanger={this.modeChanger}
+                currentMode={this.state.appMode}/>
+            <CalendarBody
+                startDate={startDate}
+                endDate={endDate}
+                currentDate={currentDate}
+                currentMode={this.state.appMode}
+            />
+        </div>);
+    }
 }

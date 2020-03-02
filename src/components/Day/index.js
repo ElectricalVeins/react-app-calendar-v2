@@ -8,7 +8,7 @@ export default class Day extends Component {
     const { startDate, endDate } = this.props;
     const { day } = this.props;
 
-    console.log(day.day());
+   // console.log(day.day());
 
     if (day< startDate.day() ||
         startDate.isAfter(endDate, 'date')) {

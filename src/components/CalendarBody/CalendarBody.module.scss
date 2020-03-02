@@ -1,19 +1,11 @@
-.calendarHeader{
-    display: flex;
-    justify-content: space-around;
-    background-color: #0B3157;
+.calendarHeader {
+  background-color: #0B3157;
 
-}
-
-.calendarHeader > span{
+  tr {
+    height: 25px;
+    vertical-align: middle;
     color: #FFFFFF;
     opacity: 0.5;
-    font-size: 11px;
-}
-
-
-
-.week{
-    display: flex;
-    justify-content: space-around;
+    font-size: 12px;
+  }
 }

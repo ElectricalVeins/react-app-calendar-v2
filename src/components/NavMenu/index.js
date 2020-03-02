@@ -9,17 +9,39 @@ export default class NavMenu extends Component {
     }
 
     monthRender = () => {
+        const {currentDate: date} = this.props;
+
         return (<>
-            <div>Previous month</div>
-            <div onClick={this.props.handler}>Selected Month</div>
-            <div>Next month</div>
+
+            {
+                //сделать 1 компонент кнопки
+            }
+            <div>
+                {
+                    date.clone().subtract(1, 'month').format('MMMM')
+                }
+            </div>
+            <div onClick={this.props.handler}>
+                {
+                    date.format('MMMM')
+                }
+            </div>
+            <div>
+                {
+                    date.clone().subtract(-1, 'month').format('MMMM')
+                }
+            </div>
         </>)
     };
 
     weekRender = () => {
         return (<>
                 <div>Prev</div>
-                <div onClick={this.props.handler}>{this.props.week}</div>
+                <div onClick={this.props.handler}>
+                    {
+                        this.props.week
+                    }
+                </div>
                 <div>Next</div>
             </>
         )

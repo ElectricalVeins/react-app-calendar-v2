@@ -1,38 +1,85 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import NavMenu from '../NavMenu';
 import styles from './CalendarNav.module.scss';
 
 export default class CalendarNav extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      isOpenModeChanger: false
+    constructor(props) {
+        super(props);
+        this.state = {
+            isOpenModeChanger: false
+        };
+    }
+
+    clickHandler = () => {
+        this.setState({
+            isOpenModeChanger: !this.state.isOpenModeChanger
+        });
     };
-  }
 
-  clickHandler = () => {
-    this.setState({
-                    isOpenModeChanger: !this.state.isOpenModeChanger
-                  });
-  };
+    render() {
+        return (<div className={styles.navContainer}>
+                <NavMenu
+                    currentDate={this.props.currentDate}
+                    handler={this.clickHandler}
+                    currentMode={this.props.currentMode}/>
+                <div
+                    className={styles.modeChangerWrapper}
+                >
 
-  render () {
-    return (<div className={styles.navContainer}>
-        <NavMenu handler={this.clickHandler} currentMode={this.props.currentMode} />
-        <ModeChange  isOpen={this.state.isOpenModeChanger}/>
-      </div>
-    );
-  }
+                    <ModeChanger
+
+                        modeChanger={this.props.modeChanger}
+                        isOpen={this.state.isOpenModeChanger}
+                        type={'week'}
+                    />
+
+                    <ModeChanger
+                        modeChanger={this.props.modeChanger}
+                        isOpen={this.state.isOpenModeChanger}
+                        type={'month'}
+                    />
+                </div>
+
+            </div>
+        );
+    }
 }
 
 //
 
-function ModeChange (props) {
-  return (<div className={props.isOpen
-                          ? styles.modeChangerOpen
-                          : styles.modeChangerClosed}>
-    <div>This Week</div>
-    <div>This Month</div>
-  </div>);
+class ModeChanger extends Component {
+
+    handleChange = () => {
+        this.props.modeChanger(this.props.type)
+    };
+
+    bodyRender = () => {
+        if (this.props.type === 'month') {
+            return (<p>
+                This Month
+            </p>)
+        } else {
+            return (<p>
+                This Week
+            </p>)
+        }
+    };
+
+    render() {
+
+        return (
+
+            <div
+                className={this.props.isOpen
+                    ? styles.modeChangerOpen
+                    : styles.modeChangerClosed}
+
+                onClick={this.handleChange}
+            >
+                {this.bodyRender()}
+            </div>
+        );
+    }
+
 
 }
