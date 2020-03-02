@@ -8,10 +8,8 @@ export default class Day extends Component {
     const { startDate, endDate } = this.props;
     const { day } = this.props;
 
-   // console.log(day.day());
-
     if (day< startDate.day() ||
-        startDate.isAfter(endDate, 'date')) {
+        day.isAfter(endDate, 'date')) {
 
       return (<td className={styles.hiddenDay}>
           {day.date()}

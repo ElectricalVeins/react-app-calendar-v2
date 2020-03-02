@@ -12,7 +12,6 @@ export default class CalendarBody extends Component {
         const weeks = [];
         const startDate = this.props.startDate.clone();
 
-        //console.log(startDate)
         do {
             const weekDates = [];
 
