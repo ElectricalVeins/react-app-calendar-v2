@@ -15,7 +15,7 @@ export default class Day extends Component {
         if (day.isBefore(startDate, 'date') || day.isAfter(endDate, 'date')) {
             dayClassNames.push(styles.hiddenDay)
         }
-        if (day.clone().date() === selectedDay.date() ) {
+        if (day.isSame(selectedDay,'date') ) {
             dayClassNames.push(styles.selectedDay)
         }
         if (day.isSame(currentDay, 'day')) {
