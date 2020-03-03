@@ -8,7 +8,6 @@ export default class CalendarNav extends Component {
         super(props);
         this.state = {
             isOpenModeChanger: false,
-
         };
         this.toggleContainer = React.createRef();
     }
@@ -34,19 +33,13 @@ export default class CalendarNav extends Component {
     };
 
     render() {
-        const {currentMode, setDateHandler, currentDate, endDate, modeChanger, selectedDay, startDate} = this.props
+        const {modeChanger} = this.props;
+
         return (<div className={styles.navContainer}
                      ref={this.toggleContainer}>
                 <NavMenu
-
-                    endDate={endDate}
-                    startDate={startDate}
-                    selectedDay={selectedDay}
-                    currentMode={currentMode}
-                    currentDate={currentDate}
                     handler={this.clickHandler}
-                    setDateHandler={setDateHandler}
-
+                    {...this.props}
                 />
                 <div className={styles.modeChangerWrapper}>
 
