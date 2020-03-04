@@ -15,7 +15,8 @@ export default class NavMenu extends Component {
     };
 
     monthRender = () => {
-        const {selectedDay: date} = this.props;
+        console.log(this.props);
+        const {selectedDay: selDate,startDate: prevMonth,endDate: NextMonth} = this.props;
 
         return (<>
             {
@@ -23,17 +24,17 @@ export default class NavMenu extends Component {
             }
             <div onClick={this.setPrevDateHandler}>
                 {
-                    date.clone().subtract(1, 'month').format('MMMM')
+                    prevMonth.clone().subtract(1, 'month').format('MMMM')
                 }
             </div>
             <div onClick={this.props.handler}>
                 {
-                    date.subtract(0, 'month').format('MMMM')
+                    prevMonth.subtract(0, 'month').format('MMMM')
                 }
             </div>
             <div onClick={this.setNextDateHandler} >
                 {
-                    date.clone().subtract(-1, 'month').format('MMMM')
+                    NextMonth.clone().subtract(-1, 'month').format('MMMM')
                 }
             </div>
         </>)
