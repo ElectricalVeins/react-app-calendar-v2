@@ -24,6 +24,7 @@ export default class Calendar extends Component {
             currentDate: moment(),
             start: start,
             end: end,
+            events:[],
         };
     }
 
@@ -61,6 +62,20 @@ export default class Calendar extends Component {
             end: moment().endOf(value)
         });
     };
+
+
+    loadData=()=>{
+        fetch('./events.json')
+            .then(res => res.json())
+            .then(obj=>this.setState({
+                events: obj
+            }))
+    };
+
+    componentDidMount() {
+        this.loadData()
+    }
+
 
     render() {
 

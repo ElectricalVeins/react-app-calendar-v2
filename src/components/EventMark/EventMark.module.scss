@@ -1,5 +1,10 @@
 .event{
-  width:15px;
-  height: 2px;
-  background-color: red;
+  flex: 1;
+  max-width: 10px;
+  height: 1px;
+  background-color: lightseagreen;
+}
+
+.event + .event{
+  margin-left: 3px;
 }

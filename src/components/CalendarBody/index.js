@@ -22,7 +22,6 @@ export default class CalendarBody extends Component {
         } while (
             this.props.start.clone().endOf(this.props.appMode).isSameOrAfter(startDate,
             'date'));
-
         return weeks;
     };
 

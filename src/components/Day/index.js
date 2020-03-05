@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import moment from 'moment';
 import styles from './Day.module.scss';
+import EventMark from "../EventMark";
 
 export default class Day extends Component {
 
@@ -22,23 +23,40 @@ export default class Day extends Component {
             dayClassNames.push(styles.currentDay)
         }
 
-        dayClassNames.push(styles.day);
 
-        return (<td
+        return (<p
             className={dayClassNames.join(' ')}
             onClick={this.selectDay}
         >
             {day.date()}
-        </td>)
+        </p>)
+    };
+
+    eventMarkRender=()=>{
+        const length = this.props.events.length;
+        const eventMarks=[];
+        if(Array.isArray(this.props.events) && length >0){
+            for(let i= 0;i<=length && i<3;i++){
+                eventMarks.push(<EventMark key={i} />)
+            }
+
+        }
+
+        return eventMarks
     };
 
     render() {
 
-        return (<>
+        return (<td className={styles.day}>
                 {
                     this.dayRender()
                 }
-            </>
+                <div className={styles.eventsContainer}>
+                {
+                    this.eventMarkRender()
+                }
+                </div>
+            </td>
         );
     }
 }

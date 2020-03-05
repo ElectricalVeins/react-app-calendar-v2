@@ -15,7 +15,6 @@ export default class NavMenu extends Component {
     };
 
     monthRender = () => {
-        console.log(this.props);
         const {selectedDay: selDate,start: prevMonth,end: NextMonth} = this.props;
 
         return (<>
