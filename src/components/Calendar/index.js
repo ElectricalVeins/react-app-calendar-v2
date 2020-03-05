@@ -34,18 +34,17 @@ export default class Calendar extends Component {
     };
 
     setDate = (isNext) => {
-        const startDate = this.state.start.clone();
-        const endDate = this.state.end.clone();
+        const {start:startDate, end:endDate, appMode} = this.state;
 
         if (isNext) {
             this.setState({
-                start: startDate.add(1, this.state.appMode).clone(),
-                end: endDate.add(1, this.state.appMode).clone()
+                start: startDate.add(1, this.state.appMode),
+                end: endDate.add(1, this.state.appMode).endOf(appMode)
             });
         } else {
             this.setState({
-                start: startDate.subtract(1, this.state.appMode).clone(),
-                end: endDate.subtract(1, this.state.appMode).clone()
+                start: startDate.subtract(1, this.state.appMode),
+                end: endDate.subtract(1, this.state.appMode).endOf(appMode)
             })
         }
 
