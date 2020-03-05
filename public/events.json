@@ -24,12 +24,6 @@
         "body": "Body event",
         "time": "15:00",
         "isIn": false
-      },
-      {
-        "name": "event Name",
-        "body": "Body event",
-        "time": "19:00",
-        "isIn": true
       }
     ]
   },
@@ -73,12 +67,6 @@
       {
         "name": "event Name",
         "body": "Body event",
-        "time": "12:00",
-        "isIn": false
-      },
-      {
-        "name": "event Name",
-        "body": "Body event",
         "time": "17:00",
         "isIn": true
       }
@@ -103,6 +91,74 @@
   },
   {
     "date": "2020-03-06",
+    "events": [
+      {
+        "name": "event Name",
+        "body": "Body event",
+        "time": "12:00",
+        "isIn": false
+      },
+      {
+        "name": "event Name",
+        "body": "Body event",
+        "time": "17:00",
+        "isIn": true
+      }
+    ]
+  },
+  {
+    "date": "2020-03-07",
+    "events": [
+      {
+        "name": "event Name",
+        "body": "Body event",
+        "time": "12:00",
+        "isIn": false
+      },
+      {
+        "name": "event Name",
+        "body": "Body event",
+        "time": "17:00",
+        "isIn": true
+      }
+    ]
+  },
+  {
+    "date": "2020-03-08",
+    "events": [
+      {
+        "name": "event Name",
+        "body": "Body event",
+        "time": "12:00",
+        "isIn": false
+      },
+      {
+        "name": "event Name",
+        "body": "Body event",
+        "time": "17:00",
+        "isIn": true
+      }
+    ]
+  },
+  {
+    "date": "2020-04-06",
+    "events": [
+      {
+        "name": "event Name",
+        "body": "Body event",
+        "time": "12:00",
+        "isIn": false
+      },
+      {
+        "name": "event Name",
+        "body": "Body event",
+        "time": "17:00",
+        "isIn": true
+      }
+    ]
+  },
+  {
+    "date": "2020-04-05",
     "events": [
       {
         "name": "event Name",

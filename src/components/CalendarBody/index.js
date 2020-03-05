@@ -4,19 +4,11 @@ import styles from './CalendarBody.module.scss';
 import moment from 'moment';
 
 export default class CalendarBody extends Component {
-    constructor(props) {
-        super(props);
-
-    }
-
-
 
     dateCalc = () => {
         const weeks = [];
-        const start = this.props.startDate;
+        const start = this.props.start;
         const startDate = start.clone().startOf('week');
-        const currentDate = this.props.currentDate.clone();
-        const endDate = this.props.endDate.clone();
 
         do {
             const weekDates = [];
@@ -25,11 +17,11 @@ export default class CalendarBody extends Component {
                 weekDates.push(startDate.clone());
                 startDate.add(1, 'day');
             }
-            //debugger
-            weeks.push((weekDates));
-        } while (this.props.startDate.clone().endOf(this.props.currentMode).isSameOrAfter(startDate,
-            'date'));
 
+            weeks.push((weekDates));
+        } while (
+            this.props.start.clone().endOf(this.props.appMode).isSameOrAfter(startDate,
+            'date'));
 
         return weeks;
     };
@@ -41,11 +33,7 @@ export default class CalendarBody extends Component {
         for (let week of weeks) {
             weekComponents.push(
                 <Week
-                    selectDayHandler={this.props.selectDayHandler}
-                    selectedDay={this.props.selectedDay}
-                    currentDay={this.props.currentDate.clone()}
-                    startDate={this.props.startDate.clone()}
-                    endDate={this.props.endDate.clone()}
+                    {...this.props}
                     week={week}
                     key={week[0].format('w')}
                 />
@@ -56,7 +44,6 @@ export default class CalendarBody extends Component {
     };
 
     render() {
-
         return (<table>
             <CalendarHeader/>
             <tbody>
@@ -65,7 +52,6 @@ export default class CalendarBody extends Component {
             }
             </tbody>
         </table>);
-
     }
 }
 

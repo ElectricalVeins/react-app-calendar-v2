@@ -63,30 +63,17 @@ export default class Calendar extends Component {
     };
 
     render() {
-        const currentDate = this.state.currentDate.clone();
-        const startDate = this.state.start.clone();
-        const endDate = this.state.end.clone();
-        const currentMode = this.state.appMode;
+
 
         return (<div className={styles.container}>
             <CalendarNav
-                selectedDay={this.state.selectedDay}
-                startDate={startDate}
-                endDate={endDate}
-                currentDate={currentDate}
-                currentMode={currentMode}
-
+                {...this.state}
                 modeChanger={this.modeChanger}
                 setDateHandler={this.setDate}
             />
             <CalendarBody
                 selectDayHandler={this.setSelectedDay}
-                selectedDay={this.state.selectedDay}
-
-                startDate={startDate}
-                endDate={endDate}
-                currentDate={currentDate}
-                currentMode={currentMode}
+                {...this.state}
             />
         </div>);
     }

@@ -9,10 +9,10 @@ export default class Day extends Component {
     };
 
     dayRender = () => {
-        const {startDate, endDate, selectedDay, day, currentDay} = this.props;
+        const {start, end, selectedDay, day, currentDay} = this.props;
         const dayClassNames = [];
 
-        if (day.isBefore(startDate, 'date') || day.isAfter(endDate, 'date')) {
+        if (day.isBefore(start.clone(), 'date') || day.isAfter(end.clone(), 'date')) {
             dayClassNames.push(styles.hiddenDay)
         }
         if (day.isSame(selectedDay,'date') ) {

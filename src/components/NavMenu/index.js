@@ -16,7 +16,7 @@ export default class NavMenu extends Component {
 
     monthRender = () => {
         console.log(this.props);
-        const {selectedDay: selDate,startDate: prevMonth,endDate: NextMonth} = this.props;
+        const {selectedDay: selDate,start: prevMonth,end: NextMonth} = this.props;
 
         return (<>
             {
@@ -56,8 +56,8 @@ export default class NavMenu extends Component {
 
     render() {
         return (<div className={styles.navContainer}>
-                {this.props.currentMode
-                    ? this.monthRender()
+                {this.props.appMode
+                   ? this.monthRender()
                     : this.weekRender()
                 }
             </div>
