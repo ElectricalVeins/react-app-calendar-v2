@@ -16,7 +16,7 @@ export default class Week extends Component {
             events.forEach((item)=>{
                 const {date,events}=item;
                 if(moment(date).format('YYYY-MM-DD')===day.format('YYYY-MM-DD')){
-                    console.log(events)
+                 //   console.log(events)
                     dayEvents.push(events);
                 }
             });

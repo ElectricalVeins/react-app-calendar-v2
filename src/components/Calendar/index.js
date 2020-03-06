@@ -4,6 +4,7 @@ import CalendarBody from '../CalendarBody';
 import styles from './Calendar.module.scss';
 import moment from 'moment';
 import Week from "../Week";
+import Events from '../Events';
 
 export default class Calendar extends Component {
     constructor(props) {
@@ -79,7 +80,6 @@ export default class Calendar extends Component {
 
     render() {
 
-
         return (<div className={styles.container}>
             <CalendarNav
                 {...this.state}
@@ -90,6 +90,8 @@ export default class Calendar extends Component {
                 selectDayHandler={this.setSelectedDay}
                 {...this.state}
             />
+          <Events events={this.state.events} />
+
         </div>);
     }
 }
