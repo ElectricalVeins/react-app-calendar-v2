@@ -4,7 +4,7 @@ import CalendarBody from '../CalendarBody';
 import styles from './Calendar.module.scss';
 import moment from 'moment';
 import Week from "../Week";
-import Events from '../Events';
+import EventList from '../EventList';
 
 export default class Calendar extends Component {
     constructor(props) {
@@ -90,7 +90,9 @@ export default class Calendar extends Component {
                 selectDayHandler={this.setSelectedDay}
                 {...this.state}
             />
-          <Events events={this.state.events} />
+          <EventList items={this.state.events}
+                     selectedDay={this.state.selectedDay}
+                     end={this.state.end}/>
 
         </div>);
     }

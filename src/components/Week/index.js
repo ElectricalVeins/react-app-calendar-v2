@@ -16,7 +16,6 @@ export default class Week extends Component {
             events.forEach((item)=>{
                 const {date,events}=item;
                 if(moment(date).format('YYYY-MM-DD')===day.format('YYYY-MM-DD')){
-                 //   console.log(events)
                     dayEvents.push(events);
                 }
             });
@@ -33,7 +32,7 @@ export default class Week extends Component {
     };
 
     render() {
-        return (<tr>
+        return (<tr style={{height:'50px'}}>
                 {this.weekRender()}
             </tr>
         );

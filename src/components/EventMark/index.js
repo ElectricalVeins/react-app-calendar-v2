@@ -7,7 +7,7 @@ export default class EventMark extends Component{
     render() {
 
         return(
-            <p className={styles.event}>  </p>
+            <span className={styles.event}>  </span>
         );
     }
 }
