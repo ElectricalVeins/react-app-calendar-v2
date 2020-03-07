@@ -4,35 +4,28 @@
 
 .day {
 
-  cursor: pointer;
-  color: var(--accent-color);
-  width: 40px;
   height: 40px;
+  width: 40px;
+  text-align: center;
   vertical-align: middle;
+  cursor: pointer;
 }
 
 .day:hover {
   background-color: var(--accent-color);
-  border-radius: 10px;
   color: white;
-}
-
-.selectedDay {
-  @extend .day;
-  @extend .day:hover;
+  border-radius: 5px;
 }
 
 .currentDay {
-  @extend .day;
   position: relative;
 }
 
 .currentDay::before {
   content: '.';
-  /*  display: inline-block;*/
 
   position: absolute;
-  top: -0.5rem;
+  top: -1.25rem;
   left: 0;
 
   color: red;
@@ -40,9 +33,9 @@
 
   text-align: center;
   width: 100%;
-
 }
 
-.eventsContainer{
+.eventsContainer {
   display: flex;
+  justify-content: center;
 }
