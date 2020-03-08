@@ -12,13 +12,14 @@ export default class Day extends Component {
 
     eventMarkRender = () => {
         const {events} = this.props;
-        const arrayOfEvents =  events[0];
+        const arrayOfEvents = events[0];
         const eventMarks = [];
 
         if (Array.isArray(arrayOfEvents) && arrayOfEvents.length > 0) {
 
             for (let i = 0; i < arrayOfEvents.length && i <= 3; i++) {
-                eventMarks.push(<EventMark key={i} /*isIn={}*/ />
+                eventMarks.push(<EventMark key={i}
+                                           isIn={arrayOfEvents[i].isIn}/>
                 )
             }
         }
