@@ -3,7 +3,7 @@ import CalendarNav from '../CalendarNav';
 import CalendarBody from '../CalendarBody';
 import styles from './Calendar.module.scss';
 import moment from 'moment';
-import Week from "../Week";
+import {Swipeable} from 'react-swipeable'
 import EventList from '../EventList';
 
 export default class Calendar extends Component {
@@ -25,7 +25,7 @@ export default class Calendar extends Component {
             currentDate: moment(),
             start: start,
             end: end,
-            events:[],
+            events: [],
         };
     }
 
@@ -36,7 +36,7 @@ export default class Calendar extends Component {
     };
 
     setDate = (isNext) => {
-        const {start:startDate, end:endDate, appMode} = this.state;
+        const {start: startDate, end: endDate, appMode} = this.state;
 
         if (isNext) {
             this.setState({
@@ -64,11 +64,10 @@ export default class Calendar extends Component {
         });
     };
 
-
-    loadData=()=>{
+    loadData = () => {
         fetch('./events.json')
             .then(res => res.json())
-            .then(obj=>this.setState({
+            .then(obj => this.setState({
                 events: obj
             }))
     };
@@ -76,7 +75,6 @@ export default class Calendar extends Component {
     componentDidMount() {
         this.loadData()
     }
-
 
     render() {
 
@@ -86,13 +84,26 @@ export default class Calendar extends Component {
                 modeChanger={this.modeChanger}
                 setDateHandler={this.setDate}
             />
-            <CalendarBody
-                selectDayHandler={this.setSelectedDay}
-                {...this.state}
-            />
-          <EventList items={this.state.events}
-                     selectedDay={this.state.selectedDay}
-                     end={this.state.end}/>
+            <Swipeable delta={100}
+                       trackMouse={true}
+                       onSwiped={
+                           eventData => {
+                               if (eventData.deltaX > 0) {
+                                   this.setDate(true)
+                               } else {
+                                   this.setDate(false)
+                               }
+                           }}
+
+            >
+                <CalendarBody
+                    selectDayHandler={this.setSelectedDay}
+                    {...this.state}
+                />
+            </Swipeable>
+            <EventList items={this.state.events}
+                       selectedDay={this.state.selectedDay}
+                       end={this.state.end}/>
 
         </div>);
     }

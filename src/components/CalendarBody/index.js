@@ -43,7 +43,7 @@ export default class CalendarBody extends Component {
     };
 
     render() {
-        return (<table>
+        return (<table className={styles.calendarTable}>
             <CalendarHeader/>
             <tbody>
             {
