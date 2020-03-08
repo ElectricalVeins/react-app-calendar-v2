@@ -40,6 +40,7 @@ export default class CalendarNav extends Component {
                 <NavMenu
                     handler={this.clickHandler}
                     {...this.props}
+                    isOpen={this.state.isOpenModeChanger}
                 />
                 <div className={styles.modeChangerWrapper}>
 

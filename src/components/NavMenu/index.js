@@ -1,37 +1,66 @@
 import React, {Component} from 'react';
 import styles from './NavMenu.module.scss';
 import moment from "moment";
+import {mdiAppleKeyboardControl} from '@mdi/js'
+import Icon from '@mdi/react';
 
 export default class NavMenu extends Component {
 
-    setNextDateHandler=()=>{
-        const isNext=true;
+    setNextDateHandler = () => {
+        const isNext = true;
         this.props.setDateHandler(isNext)
     };
 
-    setPrevDateHandler=()=>{
-        const isNext=false;
+    setPrevDateHandler = () => {
+        const isNext = false;
         this.props.setDateHandler(isNext)
+    };
+
+    iconRender = () => {
+        const {isOpen} = this.props;
+
+        const rotateAngle = isOpen
+            ? 0
+            : 180;
+        const classToggle = isOpen
+            ? styles.iconOpened
+            : styles.iconClosed;
+        return (
+            <Icon path={mdiAppleKeyboardControl}
+                  size={1}
+                  rotate={rotateAngle}
+                  color={'white'}
+                  className={classToggle}
+            />
+        )
     };
 
     monthRender = () => {
-        const {selectedDay: selDate,start: prevMonth,end: NextMonth} = this.props;
+        const {selectedDay: selDate, start: prevMonth, end: NextMonth} = this.props;
 
         return (<>
             {
                 //сделать 1 компонент кнопки (button?)
             }
-            <div onClick={this.setPrevDateHandler}>
+            <div className={styles.monthSelect}
+                 onClick={this.setPrevDateHandler}>
                 {
                     prevMonth.clone().subtract(1, 'month').format('MMM')
                 }
             </div>
-            <div onClick={this.props.handler}>
+            <div className={styles.currentMonth}
+                 onClick={this.props.handler}>
+                <p>
+                    {
+                        prevMonth.subtract(0, 'month').format('MMMM')
+                    } </p>
                 {
-                    prevMonth.subtract(0, 'month').format('MMMM')
+                    this.iconRender()
                 }
+
             </div>
-            <div onClick={this.setNextDateHandler} >
+            <div className={styles.monthSelect}
+                 onClick={this.setNextDateHandler}>
                 {
                     NextMonth.clone().subtract(-1, 'month').format('MMM')
                 }
@@ -39,25 +68,26 @@ export default class NavMenu extends Component {
         </>)
     };
 
-    isBorderOfMonth=()=>{
-        const {start,end} = this.props;
-        const monthName =  start.format('MMMM');
-        if(end.isSame(start,'month')){
-           return `${monthName} ${start.date()}-${end.date()}`
-        }else{
-          return  `${monthName} ${start.date()} - ${end.format('MMMM')} ${end.date()}`
+    weekDisplaying = () => {
+        const {start, end} = this.props;
+        const monthName = start.format('MMMM');
+
+        if (end.isSame(start, 'month')) {
+            return `${monthName} ${start.date()}-${end.date()}`
+        } else {
+            return `${monthName} ${start.date()} - ${end.format('MMMM')} ${end.date()}`
         }
     };
 
     weekRender = () => {
         return (<>
-                <div onClick={this.setPrevDateHandler} >Prev</div>
+                <div onClick={this.setPrevDateHandler}>Prev</div>
                 <div onClick={this.props.handler}>
                     {
-                       this.isBorderOfMonth()
+                        this.weekDisplaying()
                     }
                 </div>
-                <div onClick={this.setNextDateHandler} >Next</div>
+                <div onClick={this.setNextDateHandler}>Next</div>
             </>
         )
 
@@ -65,9 +95,10 @@ export default class NavMenu extends Component {
 
     render() {
         return (<div className={styles.navContainer}>
-                {this.props.appMode === 'month'
-                   ? this.monthRender()
-                    : this.weekRender()
+                {
+                    this.props.appMode === 'month'
+                        ? this.monthRender()
+                        : this.weekRender()
                 }
             </div>
         );
