@@ -42,13 +42,13 @@ export default class NavMenu extends Component {
             {
                 //сделать 1 компонент кнопки (button?)
             }
-            <div className={styles.monthSelect}
+            <div className={styles.selectButton}
                  onClick={this.setPrevDateHandler}>
                 {
                     prevMonth.clone().subtract(1, 'month').format('MMM')
                 }
             </div>
-            <div className={styles.currentMonth}
+            <div className={styles.currentState}
                  onClick={this.props.handler}>
                 <p>
                     {
@@ -59,7 +59,7 @@ export default class NavMenu extends Component {
                 }
 
             </div>
-            <div className={styles.monthSelect}
+            <div className={styles.selectButton}
                  onClick={this.setNextDateHandler}>
                 {
                     NextMonth.clone().subtract(-1, 'month').format('MMM')
@@ -81,13 +81,15 @@ export default class NavMenu extends Component {
 
     weekRender = () => {
         return (<>
-                <div onClick={this.setPrevDateHandler}>Prev</div>
-                <div onClick={this.props.handler}>
+                <div className={styles.selectButton}
+                  onClick={this.setPrevDateHandler}>Prev</div>
+                <div className={styles.currentState}
+                  onClick={this.props.handler}>
                     {
                         this.weekDisplaying()
                     }
                 </div>
-                <div onClick={this.setNextDateHandler}>Next</div>
+                <div className={styles.selectButton} onClick={this.setNextDateHandler}>Next</div>
             </>
         )
 
