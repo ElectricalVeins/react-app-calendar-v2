@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import CalendarNav from '../CalendarNav';
 import CalendarBody from '../CalendarBody';
+import EventList from '../EventList';
 import styles from './Calendar.module.scss';
 import moment from 'moment';
 import {Swipeable} from 'react-swipeable'
-import EventList from '../EventList';
 
 export default class Calendar extends Component {
     constructor(props) {
