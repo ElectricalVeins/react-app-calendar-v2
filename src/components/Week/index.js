@@ -14,7 +14,7 @@ export default class Week extends Component {
                 currentDay={this.props.currentDay}
                 startDate={this.props.startDate.clone()}
                 endDate={this.props.endDate.clone()}
-                key={day}
+                key={day.format('w-d')}
                 day={day}
             />);
         }

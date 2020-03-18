@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-    import Week from '../Week';
+import Week from '../Week';
 import styles from './CalendarBody.module.scss';
 import moment from 'moment';
 
@@ -11,9 +11,9 @@ export default class CalendarBody extends Component {
     dateCalc = () => {
         const weeks = [];
         const start = this.props.startDate;
-        const startDate=start.startOf('week').clone()
+        const startDate = start.clone().startOf('week');
         const currentDate = this.props.currentDate.clone();
-        const endDate=this.props.endDate.clone();
+        const endDate = this.props.endDate.clone().add(1,'d');
 
         do {
             const weekDates = [];
@@ -22,9 +22,12 @@ export default class CalendarBody extends Component {
                 weekDates.push(startDate.clone());
                 startDate.add(1, 'day');
             }
+            //debugger
             weeks.push((weekDates));
         } while (this.props.startDate.clone().endOf(this.props.currentMode).isSameOrAfter(startDate,
             'date'));
+
+        console.log(endDate);
 
         return weeks;
     };
@@ -40,7 +43,8 @@ export default class CalendarBody extends Component {
                     startDate={this.props.startDate.clone()}
                     endDate={this.props.endDate.clone()}
                     week={week}
-                    key={week}/>
+                    key={week[0].format('w')}
+                />
             );
         }
         return weekComponents;

@@ -34,6 +34,11 @@ export default class Calendar extends Component {
                 start: startDate.add(1, this.state.appMode).clone(),
                 end: endDate.add(1, this.state.appMode).clone()
             });
+        } else{
+            this.setState({
+                start: startDate.subtract(1, this.state.appMode).clone(),
+                end: endDate.subtract(1, this.state.appMode).clone()
+            })
         }
     };
 
