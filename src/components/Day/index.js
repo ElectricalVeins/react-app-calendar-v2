@@ -15,14 +15,14 @@ export default class Day extends Component {
         if (day.isBefore(startDate, 'date') || day.isAfter(endDate, 'date')) {
             dayClassNames.push(styles.hiddenDay)
         }
-        if (day.clone().date() === selectedDay.date()) {
+        if (day.clone().date() === selectedDay.date() ) {
             dayClassNames.push(styles.selectedDay)
         }
         if (day.isSame(currentDay, 'day')) {
             dayClassNames.push(styles.currentDay)
-        } else {
-            dayClassNames.push(styles.day)
         }
+
+        dayClassNames.push(styles.day);
 
         return (<td
             className={dayClassNames.join(' ')}

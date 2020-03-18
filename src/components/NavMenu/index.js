@@ -3,10 +3,6 @@ import styles from './NavMenu.module.scss';
 import moment from "moment";
 
 export default class NavMenu extends Component {
-    constructor(props) {
-        super(props);
-
-    }
 
     setNextDateHandler=()=>{
         const isNext=true;
@@ -19,12 +15,11 @@ export default class NavMenu extends Component {
     };
 
     monthRender = () => {
-        const {currentDate: date} = this.props;
+        const {selectedDay: date} = this.props;
 
         return (<>
-
             {
-                //сделать 1 компонент кнопки
+                //сделать 1 компонент кнопки (button?)
             }
             <div onClick={this.setPrevDateHandler}>
                 {
@@ -33,7 +28,7 @@ export default class NavMenu extends Component {
             </div>
             <div onClick={this.props.handler}>
                 {
-                    date.format('MMMM')
+                    date.subtract(0, 'month').format('MMMM')
                 }
             </div>
             <div onClick={this.setNextDateHandler} >

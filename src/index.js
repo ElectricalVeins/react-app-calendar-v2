@@ -194,4 +194,3 @@ export const db = [
         ]
     },
 ];
-console.log(db)

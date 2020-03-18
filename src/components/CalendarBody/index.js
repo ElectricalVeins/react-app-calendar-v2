@@ -6,16 +6,10 @@ import moment from 'moment';
 export default class CalendarBody extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            selectedDay: moment()
-        }
+
     }
 
-    setSelectedDay = (value) => {
-        this.setState({
-            selectedDay: value
-        })
-    };
+
 
     dateCalc = () => {
         const weeks = [];
@@ -47,8 +41,8 @@ export default class CalendarBody extends Component {
         for (let week of weeks) {
             weekComponents.push(
                 <Week
-                    selectDayHandler={this.setSelectedDay}
-                    selectedDay={this.state.selectedDay}
+                    selectDayHandler={this.props.selectDayHandler}
+                    selectedDay={this.props.selectedDay}
                     currentDay={this.props.currentDate.clone()}
                     startDate={this.props.startDate.clone()}
                     endDate={this.props.endDate.clone()}
