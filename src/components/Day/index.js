@@ -1,48 +1,44 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import moment from 'moment';
 import styles from './Day.module.scss';
 
 export default class Day extends Component {
-  constructor(props) {
-    super(props);
-    this.state={
-      isSelected: null,
-    }
-  }
 
+    selectDay = () => {
+        this.props.selectDayHandler(this.props.day.clone())
+    };
 
-  dayRender = () => {
-    const { startDate, endDate } = this.props;
-    const { day } = this.props;
+    dayRender = () => {
+        const {startDate, endDate, selectedDay, day, currentDay} = this.props;
+        const dayClassNames = [];
 
-    if (day.isBefore(startDate,'date') ||
-        day.isAfter(endDate, 'date')) {
-
-      return (<td className={styles.hiddenDay}>
-          {day.date()}
-        </td>
-      );
-    } else if(day.isSame(this.props.currentDate,'day')){
-      return (<td className={styles.currentDay}>
-            {day.date()}
-          </td>
-      );
-    } else {
-      return (<td className={styles.day}>
-          {day.date()}
-        </td>
-      );
-    }
-
-  };
-
-  render () {
-
-    return (<>
-        {
-          this.dayRender()
+        if (day.isBefore(startDate, 'date') || day.isAfter(endDate, 'date')) {
+            dayClassNames.push(styles.hiddenDay)
         }
-      </>
-    );
-  }
+        if (day.clone().date() === selectedDay.date()) {
+            dayClassNames.push(styles.selectedDay)
+        }
+        if (day.isSame(currentDay, 'day')) {
+            dayClassNames.push(styles.currentDay)
+        } else {
+            dayClassNames.push(styles.day)
+        }
+
+        return (<td
+            className={dayClassNames.join(' ')}
+            onClick={this.selectDay}
+        >
+            {day.date()}
+        </td>)
+    };
+
+    render() {
+
+        return (<>
+                {
+                    this.dayRender()
+                }
+            </>
+        );
+    }
 }

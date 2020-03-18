@@ -1,21 +1,34 @@
-.hiddenDay{
+.hiddenDay {
   visibility: hidden;
 }
 
-.day{
+.day {
+  cursor: pointer;
   color: var(--accent-color);
-  width:40px;
-  height:40px;
+  width: 40px;
+  height: 40px;
   vertical-align: middle;
+}
+
+.day:hover {
+  background-color: var(--accent-color);
+  border-radius: 10px;
+  color: white;
+}
+
+.selectedDay {
+  @extend .day;
+  @extend .day:hover;
 }
 
 .currentDay {
   @extend .day;
   position: relative;
 }
+
 .currentDay::before {
   content: '.';
-/*  display: inline-block;*/
+  /*  display: inline-block;*/
 
   position: absolute;
   top: -0.5rem;

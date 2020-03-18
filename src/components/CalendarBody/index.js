@@ -6,14 +6,23 @@ import moment from 'moment';
 export default class CalendarBody extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            selectedDay: moment()
+        }
     }
+
+    setSelectedDay = (value) => {
+        this.setState({
+            selectedDay: value
+        })
+    };
 
     dateCalc = () => {
         const weeks = [];
         const start = this.props.startDate;
         const startDate = start.clone().startOf('week');
         const currentDate = this.props.currentDate.clone();
-        const endDate = this.props.endDate.clone().add(1,'d');
+        const endDate = this.props.endDate.clone();
 
         do {
             const weekDates = [];
@@ -27,7 +36,6 @@ export default class CalendarBody extends Component {
         } while (this.props.startDate.clone().endOf(this.props.currentMode).isSameOrAfter(startDate,
             'date'));
 
-        console.log(endDate);
 
         return weeks;
     };
@@ -39,6 +47,8 @@ export default class CalendarBody extends Component {
         for (let week of weeks) {
             weekComponents.push(
                 <Week
+                    selectDayHandler={this.setSelectedDay}
+                    selectedDay={this.state.selectedDay}
                     currentDay={this.props.currentDate.clone()}
                     startDate={this.props.startDate.clone()}
                     endDate={this.props.endDate.clone()}

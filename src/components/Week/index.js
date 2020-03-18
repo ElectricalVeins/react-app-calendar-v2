@@ -11,9 +11,13 @@ export default class Week extends Component {
         const days = [];
         for (let day of week) {
             days.push(<Day
-                currentDay={this.props.currentDay}
+                selectDayHandler={this.props.selectDayHandler}
+
                 startDate={this.props.startDate.clone()}
+                selectedDay={this.props.selectedDay}
+                currentDay={this.props.currentDay}
                 endDate={this.props.endDate.clone()}
+
                 key={day.format('w-d')}
                 day={day}
             />);
