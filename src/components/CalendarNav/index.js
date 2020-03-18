@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import NavMenu from '../NavMenu';
 import styles from './CalendarNav.module.scss';
+import ModeChangerButton from "../ModeChangerButton";
 
 export default class CalendarNav extends Component {
     constructor(props) {
@@ -8,6 +9,7 @@ export default class CalendarNav extends Component {
         this.state = {
             isOpenModeChanger: false
         };
+        this.toggleContainer = React.createRef();
     }
 
     clickHandler = () => {
@@ -16,28 +18,40 @@ export default class CalendarNav extends Component {
         });
     };
 
+    componentDidMount = () => {
+        window.addEventListener('click', this.onClickOutsideHandler);
+    };
+
+    componentWillUnmount = () => {
+        window.removeEventListener('click', this.onClickOutsideHandler);
+    };
+
+    onClickOutsideHandler = (event) => {
+        if (this.state.isOpenModeChanger && !this.toggleContainer.current.contains(event.target)) {
+            this.setState({isOpenModeChanger: false});
+        }
+    };
+
     render() {
-        return (<div className={styles.navContainer}>
+        return (<div className={styles.navContainer}
+                     ref={this.toggleContainer}>
                 <NavMenu
                     currentMode={this.props.currentMode}
                     currentDate={this.props.currentDate}
                     handler={this.clickHandler}
                     setDateHandler={this.props.setDateHandler}
 
-
                 />
-                <div
-                    className={styles.modeChangerWrapper}
-                >
+                <div className={styles.modeChangerWrapper}>
 
-                    <ModeChanger
+                    <ModeChangerButton
 
                         modeChanger={this.props.modeChanger}
                         isOpen={this.state.isOpenModeChanger}
                         type={'week'}
                     />
 
-                    <ModeChanger
+                    <ModeChangerButton
                         modeChanger={this.props.modeChanger}
                         isOpen={this.state.isOpenModeChanger}
                         type={'month'}
@@ -49,41 +63,4 @@ export default class CalendarNav extends Component {
     }
 }
 
-//
 
-class ModeChanger extends Component {
-
-    handleChange = () => {
-        this.props.modeChanger(this.props.type)
-    };
-
-    bodyRender = () => {
-        if (this.props.type === 'month') {
-            return (<p>
-                This Month
-            </p>)
-        } else {
-            return (<p>
-                This Week
-            </p>)
-        }
-    };
-
-    render() {
-
-        return (
-
-            <div
-                className={this.props.isOpen
-                    ? styles.modeChangerOpen
-                    : styles.modeChangerClosed}
-
-                onClick={this.handleChange}
-            >
-                {this.bodyRender()}
-            </div>
-        );
-    }
-
-
-}
